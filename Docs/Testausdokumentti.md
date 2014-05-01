@@ -11,7 +11,7 @@ Yhteentörmäyksiä testasin sekä suoraan hajautusfunktioista saaduilla int32-a
 
 ![Alt text](/Docs/collisions-int32.jpg?raw=true "Total collisions for int32 hash values")
 
-Ylläolevasta kuvasta näkyy, että Tira-kalvojen suosittelema algoritmi ei toimi ainakaan int32-arvoja käyttämällä kovin hyvin. Algoritmissa kertoimet kasvavat hyvin isoiksi, joten osa biteistä katoaa. Testauksessa sama algoritmi, mutta BigIntegereillä, tuottaa 0 yhteentörmäystä, mikä on melko yllättävää, koska myös BigInteger on muutettava takaisin int32-arvoksi. Testauksessa myös huomasin, että jos character-tyyppien arvoja offsettaa -97 sijaan luvulla -96, niin yhteentörmäykset kasvavat monella sadalla em. hajautusfunktiossa. Javan oma .hashCode()-metodi näkyy toimivan yhtä mallikkaasti kuin djb2 ja MurmurHash3. Ei ehkä yllättävää, että CRC32:lla ei ole yhtään törmäystä.
+Ylläolevassa kuvassa TirA-materiaalin hajautusfunktion, joka on toteutettu ilman BigIntegerien käyttöä, kohdalla on huomattavan paljon törmäyksiä verrattuna muihin. Piikki johtuu toteutuksessa käytetystä downcastista, jossa double muutetaan integer-arvoksi. Korjauksen jälkeen yhteentörmäykset vastasivat kuitenkin BigInteger toteutuksella saatua lukumäärää. Testauksessa myös huomasin, että jos character-tyyppien arvoja offsettaa -97 sijaan luvulla -96, niin yhteentörmäykset kasvavat monella sadalla TirA-materiaalin hajautusfunktiototeutuksessa. Javan oma .hashCode()-metodi näkyy toimivan yhtä mallikkaasti kuin djb2 ja MurmurHash3. Ei ehkä yllättävää, että CRC32:lla ei ole yhtään törmäystä.
 
 ![Alt text](/Docs/collisions-words.jpg?raw=true "Total collisions for int32 hash values")
 
@@ -23,7 +23,7 @@ Toiseksi on testattu hajautustaulukosta löytymisen nopeutta. Sanoja lisätään
 
 ![Alt text](/Docs/benchmarks.jpg?raw=true "Total collisions for int32 hash values")
 
-TirA-kalvon esimerkkien toteutukset pärjäsivät huonoiten. Integer-versiossa joutuu käyttämään potenssiin korotusta ja castamaan double-tyypistä int-tyyppiin joka kirjaimen kohdalla, joka osittain selittänee hitautta. Kaikki muut algoritmit toimivat kiitettävällä nopeudella, tosin CRC32 näyttää olevan raskain näistä.
+TirA-kalvon esimerkkien toteutukset pärjäsivät huonoiten. Integer-versiossa joutuu käyttämään potenssiin korotusta joka kirjaimen kohdalla, joka osittain selittänee hitautta. Kaikki muut algoritmit toimivat kiitettävällä nopeudella, tosin CRC32 näyttää olevan raskain näistä.
 
 #### Yhteenveto
 
