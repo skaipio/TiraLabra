@@ -19,11 +19,11 @@ public class DJB2ForStrings extends HashFunction<String> {
      */
     @Override
     public int getHash(String s) {
-        int hash = 5381;
+        long hash = 5381;
         for (int i = 0; i < s.length(); i++){
-            int charVal = s.charAt(i);           
+            long charVal = s.charAt(i);           
             hash = ((hash << 5) + hash) + charVal;
         }
-        return hash;
+        return (int)(hash % Integer.MAX_VALUE);
     }
 }

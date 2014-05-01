@@ -23,6 +23,6 @@ public class CRC32ForStrings extends HashFunction<String> {
     @Override
     public int getHash(String o) {
         crc.update(o.getBytes());
-        return (int) crc.getValue();
+        return (int) (crc.getValue() % Integer.MAX_VALUE);
     }
 }

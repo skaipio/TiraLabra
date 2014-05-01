@@ -26,12 +26,12 @@ public class FNVOneForStrings extends HashFunction<String> {
      */
     @Override
     public int getHash(String s) {
-        int hash = fnvOffsetBasis;
+        long hash = fnvOffsetBasis;
         for (int i = 0; i < s.length(); i++){
             int charVal = s.charAt(i);           
             hash = hash ^ charVal;
             hash = hash * fnvPrime;
         }
-        return hash;
+        return (int)(hash % Integer.MAX_VALUE);
     }
 }

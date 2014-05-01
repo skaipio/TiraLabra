@@ -32,12 +32,12 @@ public class GeneralHashFuncForStrings2 extends HashFunction<String> {
             // the noncapital character ascii values start at decimal 97 and continue to 122
             int charVal = s.charAt(i)-96;       // -97 results in collisions but -96 doesnt??? 
             BigInteger ascii = new BigInteger(charVal + "");
-            // smaller multiplier (though at least 26) = less overflow = less collisions, 26 because 26 characters  
+            // 26 because 26 characters  
             BigInteger multiplier = new BigInteger("26");  
             multiplier = multiplier.pow(i);
             hash = hash.add(ascii.multiply(multiplier));
         }
-        return hash.intValue();
+        return hash.mod(new BigInteger(Integer.MAX_VALUE + "")).intValue();
     }
     
     /**

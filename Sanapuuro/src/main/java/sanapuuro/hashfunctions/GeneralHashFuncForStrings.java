@@ -20,13 +20,19 @@ public class GeneralHashFuncForStrings extends HashFunction<String> {
      */
     @Override
     public int getHash(String s) {
-        int hash = 0;
+        long hash = 0;
         for (int i = 0; i < s.length(); i++){
-            int charVal = s.charAt(i)-97;
-            // smaller multiplier (though at least 26) = less overflow = less collisions, 26 because 26 characters  
-            hash += charVal*(int)Math.pow(26, i);   
+            // lower case ASCII char values start at 97
+            
+            // same as when using BigIntegers, -97 results in a few hundred more collisions
+            // -96 just works better
+            long charVal = s.charAt(i)-96;  
+            // 26 characters in use
+            hash += charVal*Math.pow(26, i);
+            // the power becomes quite large, but the hash value stays well
+            // under the maximum of long (2^63-1) with 8 character strings
         }
-        return hash;
+        return (int)(hash % Integer.MAX_VALUE);
     }
 
     /**

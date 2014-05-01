@@ -29,11 +29,14 @@ public class Util {
         }
         int max = 0;
         int collisions = 0;
+        int collidingWords = 0;
         for (int count : collisionCounts.values()) {
             collisions += count;
+            if (count != 0) collidingWords++;
             max = Math.max(count, max);
         }
-        float average = 1.0f*(collisions)/collisionCounts.size();
+        float average = 0;
+        if (collidingWords != 0) average = 1.0f*collisions/collidingWords;
         return new float[]{collisions, average, max};
     }
     

@@ -5,9 +5,7 @@
  */
 package sanapuuro.benchmarks;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,7 +15,6 @@ import sanapuuro.hashfunctions.DJB2ForStrings;
 import sanapuuro.hashfunctions.FNVOneForStrings;
 import sanapuuro.hashfunctions.GeneralHashFuncForStrings;
 import sanapuuro.hashfunctions.GeneralHashFuncForStrings2;
-import sanapuuro.hashfunctions.HashFunction;
 import sanapuuro.hashfunctions.MurmurHash3ForStrings;
 import sanapuuro.fileio.FileIO;
 import sanapuuro.hashfunctions.CRC32ForStrings;
