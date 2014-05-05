@@ -11,7 +11,7 @@ PrimeNumberUtils
 
 ### Tavoitteet
 
-Projektissa on pyritty etsimään hajautusfunktio, jolla saataisiin mahdollisimman vähän yhteentörmäyksiä, ja joka on kohtuullisen nopea käyttää, sillä tekoälyn nopeus riippuu paljon myös hajautusfunktion nopeudesta. Funktiota käytetään String-objektien hash-arvojen laskemiseen Sanapuuro-pelissä. Tässä projektissa on kokeiltu lähinnä TirA-materiaalin ehdotusta String-objektien hajautusarvojen laskemiseksi, djb2-, FNV-1a- , MurmurHash3- ja CRC32-hajautusfunktioita. Performanssitestauksessa djb2 vaikutti sopivalta kompromissilta, vaikka CRC32-algoritmilla yhteentörmäyksiä olisi hitusen vähemmän. Tekoälyä on myös pyritty jonkin verran optimoimaan mm. jättämällä johonkin soluun redundanttien permutaatioiden läpikäyminen pois.
+Projektissa on pyritty etsimään hajautusfunktio, jolla saataisiin mahdollisimman vähän yhteentörmäyksiä, ja joka on kohtuullisen nopea käyttää, sillä tekoälyn nopeus riippuu paljon myös hajautusfunktion nopeudesta. Funktiota käytetään String-objektien hash-arvojen laskemiseen Sanapuuro-pelissä. Tässä projektissa on kokeiltu lähinnä TirA-materiaalin ehdotusta String-objektien hajautusarvojen laskemiseksi, djb2-, FNV-1a- , MurmurHash3- ja CRC32-hajautusfunktioita. Performanssitestauksessa djb2 vaikutti sopivalta kompromissilta, vaikka CRC32-algoritmilla yhteentörmäyksiä olisi hitusen vähemmän. Tekoälyä on myös pyritty jonkin verran optimoimaan mm. jättämällä soluun redundanttien permutaatioiden läpikäyminen pois.
 
 
 ### Toteutus ja aika-analyysi
